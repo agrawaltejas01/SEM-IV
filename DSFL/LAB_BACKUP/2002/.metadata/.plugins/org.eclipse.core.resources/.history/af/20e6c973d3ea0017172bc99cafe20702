@@ -1,0 +1,23 @@
+/*
+ * inpost.h
+ *
+ *  Created on: 27-Dec-2017
+ *      Author: e2002
+ */
+
+#ifndef INPOST_H_
+#define INPOST_H_
+#include "stack.h"
+#include <string>
+class inpost
+{
+
+public:
+		int isoperator(char x);
+		int priority(char x);
+
+		void infix_to_postfix(string arr,string ans,stack s);
+
+};
+
+#endif /* INPOST_H_ */

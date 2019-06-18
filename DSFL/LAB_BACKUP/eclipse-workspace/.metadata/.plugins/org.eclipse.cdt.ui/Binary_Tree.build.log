@@ -1,0 +1,24 @@
+11:34:27 **** Incremental Build of configuration Debug for project Binary_Tree ****
+make all 
+Building file: ../src/Binary_Tree.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Binary_Tree.d" -MT"src/Binary_Tree.o" -o "src/Binary_Tree.o" "../src/Binary_Tree.cpp"
+../src/Binary_Tree.cpp: In function ‘int main()’:
+../src/Binary_Tree.cpp:17:8: warning: variable ‘p’ set but not used [-Wunused-but-set-variable]
+  node *p;
+        ^
+Finished building: ../src/Binary_Tree.cpp
+ 
+Building file: ../src/b_tree.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/b_tree.d" -MT"src/b_tree.o" -o "src/b_tree.o" "../src/b_tree.cpp"
+Finished building: ../src/b_tree.cpp
+ 
+Building target: Binary_Tree
+Invoking: GCC C++ Linker
+g++  -o "Binary_Tree"  ./src/Binary_Tree.o ./src/b_tree.o   
+Finished building target: Binary_Tree
+ 
+
+11:34:31 Build Finished (took 3s.74ms)
+

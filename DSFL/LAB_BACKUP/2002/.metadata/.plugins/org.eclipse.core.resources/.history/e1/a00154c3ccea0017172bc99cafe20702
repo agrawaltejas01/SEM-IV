@@ -1,0 +1,18 @@
+/*
+ * stack.cpp
+ *
+ *  Created on: 27-Dec-2017
+ *      Author: e2002
+ */
+
+#include "stack.h"
+
+stack::stack() {
+	// TODO Auto-generated constructor stub
+
+}
+
+stack::~stack() {
+	// TODO Auto-generated destructor stub
+}
+

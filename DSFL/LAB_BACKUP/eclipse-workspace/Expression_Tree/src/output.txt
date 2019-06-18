@@ -1,0 +1,259 @@
+-----------------------MENU---------------------------
+		1.Create a Tree
+		2.Recursive Traversal
+		3.Non-Recursive Traversal
+		4.Exit
+
+Enter Choice : 1
+
+
+
+	1.Postfix Expression
+	2.Prefix Expression
+
+Enter Choice : 1
+
+Enter a postfix expression : ab+cd-*ef+/
+
+Tree Created !!!
+-----------------------MENU---------------------------
+		1.Create a Tree
+		2.Recursive Traversal
+		3.Non-Recursive Traversal
+		4.Exit
+
+Enter Choice : 2
+
+
+
+	1.Recurssive Inorder
+		2.Recurssive Postorder
+		3.Recurssive Preorder
+
+Enter Choice : 1
+
+Inorder Traversal is : ((((a)+(b))*((c)-(d)))/((e)+(f)))
+
+-----------------------MENU---------------------------
+		1.Create a Tree
+		2.Recursive Traversal
+		3.Non-Recursive Traversal
+		4.Exit
+
+Enter Choice : 2
+
+
+
+	1.Recurssive Inorder
+		2.Recurssive Postorder
+		3.Recurssive Preorder
+
+Enter Choice : 2
+
+Postorder Traversal is : ab+cd-*ef+/
+
+-----------------------MENU---------------------------
+		1.Create a Tree
+		2.Recursive Traversal
+		3.Non-Recursive Traversal
+		4.Exit
+
+Enter Choice : 2
+
+
+
+	1.Recurssive Inorder
+		2.Recurssive Postorder
+		3.Recurssive Preorder
+
+Enter Choice : 3
+
+Preorder Traversal is : /*+ab-cd+ef
+
+-----------------------MENU---------------------------
+		1.Create a Tree
+		2.Recursive Traversal
+		3.Non-Recursive Traversal
+		4.Exit
+
+Enter Choice : 3
+
+
+
+	1.Non-Recurssive Inorder
+		2.Non-Recurssive Postorder
+		3.Non-Recurssive Preorder
+
+Enter Choice : 1
+
+Inorder Traversal is : a + b * c - d / e + f 
+
+-----------------------MENU---------------------------
+		1.Create a Tree
+		2.Recursive Traversal
+		3.Non-Recursive Traversal
+		4.Exit
+
+Enter Choice : 3
+
+
+
+	1.Non-Recurssive Inorder
+		2.Non-Recurssive Postorder
+		3.Non-Recurssive Preorder
+
+Enter Choice : 2
+
+Postorder Traversal is : a b + c d - * e f + / 
+
+-----------------------MENU---------------------------
+		1.Create a Tree
+		2.Recursive Traversal
+		3.Non-Recursive Traversal
+		4.Exit
+
+Enter Choice : 3
+
+
+
+	1.Non-Recurssive Inorder
+		2.Non-Recurssive Postorder
+		3.Non-Recurssive Preorder
+
+Enter Choice : 3
+
+Preorder Traversal is : / * + a b - c d + e f 
+
+-----------------------MENU---------------------------
+		1.Create a Tree
+		2.Recursive Traversal
+		3.Non-Recursive Traversal
+		4.Exit
+
+Enter Choice : 1
+
+
+
+	1.Postfix Expression
+	2.Prefix Expression
+
+Enter Choice : 2
+
+Enter a prefix expression : *+ab+cd
+
+Tree Created !!!
+-----------------------MENU---------------------------
+		1.Create a Tree
+		2.Recursive Traversal
+		3.Non-Recursive Traversal
+		4.Exit
+
+Enter Choice : 2
+
+
+
+	1.Recurssive Inorder
+		2.Recurssive Postorder
+		3.Recurssive Preorder
+
+Enter Choice : 1
+
+Inorder Traversal is : (((a)+(b))*((c)+(d)))
+
+-----------------------MENU---------------------------
+		1.Create a Tree
+		2.Recursive Traversal
+		3.Non-Recursive Traversal
+		4.Exit
+
+Enter Choice : 2
+
+
+
+	1.Recurssive Inorder
+		2.Recurssive Postorder
+		3.Recurssive Preorder
+
+Enter Choice : 2
+
+Postorder Traversal is : ab+cd+*
+
+-----------------------MENU---------------------------
+		1.Create a Tree
+		2.Recursive Traversal
+		3.Non-Recursive Traversal
+		4.Exit
+
+Enter Choice : 2
+
+
+
+	1.Recurssive Inorder
+		2.Recurssive Postorder
+		3.Recurssive Preorder
+
+Enter Choice : 3
+
+Preorder Traversal is : *+ab+cd
+
+-----------------------MENU---------------------------
+		1.Create a Tree
+		2.Recursive Traversal
+		3.Non-Recursive Traversal
+		4.Exit
+
+Enter Choice : 3
+
+
+
+	1.Non-Recurssive Inorder
+		2.Non-Recurssive Postorder
+		3.Non-Recurssive Preorder
+
+Enter Choice : 1
+
+Inorder Traversal is : a + b * c + d 
+
+-----------------------MENU---------------------------
+		1.Create a Tree
+		2.Recursive Traversal
+		3.Non-Recursive Traversal
+		4.Exit
+
+Enter Choice : 3
+
+
+
+	1.Non-Recurssive Inorder
+		2.Non-Recurssive Postorder
+		3.Non-Recurssive Preorder
+
+Enter Choice : 2
+
+Postorder Traversal is : a b + c d + * 
+
+-----------------------MENU---------------------------
+		1.Create a Tree
+		2.Recursive Traversal
+		3.Non-Recursive Traversal
+		4.Exit
+
+Enter Choice : 3
+
+
+
+	1.Non-Recurssive Inorder
+		2.Non-Recurssive Postorder
+		3.Non-Recurssive Preorder
+
+Enter Choice : 3
+
+Preorder Traversal is : * + a b + c d 
+
+-----------------------MENU---------------------------
+		1.Create a Tree
+		2.Recursive Traversal
+		3.Non-Recursive Traversal
+		4.Exit
+
+Enter Choice : 4

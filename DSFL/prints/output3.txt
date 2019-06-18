@@ -1,0 +1,112 @@
+	----------------MENU------------------
+		1.Create
+		2.Depth of Tree
+		3.Display Leaves
+		4.Display tree
+		5.Create a copy
+		6.Level Display
+		7.Exit
+
+Enter Choice : 1
+
+Enter Element (-1 for null data) of node : 1
+Left node of 1 :: 
+	Enter Element (-1 for null data) of node : 2
+Left node of 2 :: 
+	Enter Element (-1 for null data) of node : 4
+Left node of 4 :: 
+	Enter Element (-1 for null data) of node : -1
+Right node of 4 :: 
+	Enter Element (-1 for null data) of node : -1
+Right node of 2 :: 
+	Enter Element (-1 for null data) of node : 5
+Left node of 5 :: 
+	Enter Element (-1 for null data) of node : -1
+Right node of 5 :: 
+	Enter Element (-1 for null data) of node : -1
+Right node of 1 :: 
+	Enter Element (-1 for null data) of node : 3
+Left node of 3 :: 
+	Enter Element (-1 for null data) of node : -1
+Right node of 3 :: 
+	Enter Element (-1 for null data) of node : -1
+	----------------MENU------------------
+		1.Create
+		2.Depth of Tree
+		3.Display Leaves
+		4.Display tree
+		5.Create a copy
+		6.Level Display
+		7.Exit
+
+Enter Choice : 2
+
+Height of tree is : 3
+	----------------MENU------------------
+		1.Create
+		2.Depth of Tree
+		3.Display Leaves
+		4.Display tree
+		5.Create a copy
+		6.Level Display
+		7.Exit
+
+Enter Choice : 3
+
+Leaf Nodes Are : 3 5 4 
+
+	----------------MENU------------------
+		1.Create
+		2.Depth of Tree
+		3.Display Leaves
+		4.Display tree
+		5.Create a copy
+		6.Level Display
+		7.Exit
+
+Enter Choice : 4
+
+Tree in preorder is :: 
+1 2 4 5 3 
+
+	----------------MENU------------------
+		1.Create
+		2.Depth of Tree
+		3.Display Leaves
+		4.Display tree
+		5.Create a copy
+		6.Level Display
+		7.Exit
+
+Enter Choice : 6
+
+Tree in level order is :: 
+1 
+2 3 
+4 5 
+
+
+
+	----------------MENU------------------
+		1.Create
+		2.Depth of Tree
+		3.Display Leaves
+		4.Display tree
+		5.Create a copy
+		6.Level Display
+		7.Exit
+
+Enter Choice : 5
+
+		!! Copied !!
+
+1 2 4 5 3 	----------------MENU------------------
+		1.Create
+		2.Depth of Tree
+		3.Display Leaves
+		4.Display tree
+		5.Create a copy
+		6.Level Display
+		7.Exit
+
+Enter Choice : 7

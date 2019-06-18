@@ -1,0 +1,34 @@
+/*
+ * stack.h
+ *
+ *  Created on: 27-Dec-2017
+ *      Author: e2002
+ */
+
+#ifndef STACK_H_
+#define STACK_H_
+
+typedef struct node
+{
+		int data;
+		struct node *link;
+}node;
+
+class stack
+{
+	int max=3;
+	node *Top;
+
+public:
+	stack();
+
+	int isempty();
+	int isfull();
+
+	void push(int x);
+	int tope();
+	int pop();
+
+};
+
+#endif /* STACK_H_ */

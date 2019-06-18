@@ -1,0 +1,149 @@
+/*
+ * replace.cpp
+ *
+ *  Created on: 18-Mar-2018
+ *      Author: deception
+ */
+
+#include "replace.h"
+#include "student.h"
+#include<iostream>
+#include<string>
+#include<iomanip>
+using namespace std;
+
+replace::replace(int n)
+{
+	for(int i=0;i<20;i++)
+	{
+		flag[i]=0;
+		chain[i]=-1;
+	}
+
+	size=n;
+}
+
+int replace :: hash(long long int x)
+{
+	//return (x%size);
+	return x%10;
+}
+
+void replace :: insert(student s[])
+{
+	for(int std_idx=0;std_idx<size;std_idx++)
+	{
+		long long int ph_no=s[std_idx].no;
+
+		int start=hash(ph_no);
+
+
+		if(flag[start]==0)				//if desired location is empty
+		{
+			data[start]=s[std_idx];
+			flag[start]=1;
+
+			//cout<<start<<endl;
+
+			continue;
+		}
+
+		//cout<<"IGI\n";
+
+		if(hash(data[start].no) != hash(ph_no))	//no synonym
+		{
+			int i=0,j=start;			// i will be index of data	j=index of next empty location
+			while(flag[j])	//locate next empty location
+			{
+				j = hash(j+1);
+			}
+
+			i = hash(data[start].no);
+
+			while(chain[i] != start)	//go to end of synonym of element who sent data at desired location of current start
+				i=chain[i];
+
+			chain[i]=chain[start];	//modify last element chain
+
+			int extra=start;
+
+			while(chain[extra] != -1)
+				extra=chain[extra];
+
+			chain[extra]=j;				// update chain of element who sent incorrect data at desired location of current start
+			data[j]=data[start];
+			flag[j]=1;
+
+			data[start]=s[std_idx];
+			chain[start]=-1;
+			continue;
+		}
+
+		int i=0,j=start;			// i will be index of data	j=index of next empty location
+		while(flag[j] && i<size)	//locate next empty location
+		{
+			j = hash(j+1);
+		}
+
+		data[j]=s[std_idx];
+		flag[j]=1;
+		chain[j]=-1;
+
+		i=start;
+		while(chain[i] != -1)	// traverse upto start element
+			i=chain[i];
+
+		chain[i]=j;				// update chain of start
+	}
+}
+
+void replace :: display()
+{
+	cout<<setw(10)<<"Name"<<setw(15)<<"Phone no."<<setw(15)<<"Chain"<<endl;
+	cout<<"---------------------------------------------------------------------";
+	cout<<endl;
+
+	for(int i=0;i<10;i++)
+	//for(int i=0;i<size;i++)
+	{
+			if(flag[i])
+				cout<<setw(10)<<data[i].name<<setw(15)<<data[i].no<<setw(15)<<chain[i]<<endl;
+
+			else
+				cout<<setw(10)<<"----"<<setw(15)<<"----"<<setw(15)<<chain[i]<<endl;
+	}
+}
+
+void replace :: search(long long int x)
+{
+	int i=0,j;
+	j=hash(x);
+
+	while(i<size && flag[j] && hash(data[j].no)!=hash(x))
+	{
+		i++;
+		j=hash(j+1);
+	}
+
+	if( !flag[j] || i==size)
+	{
+		cout<<"No match found !!";
+		return;
+	}
+
+	while(j!=-1)
+	{
+		if(data[j].no == x)
+		{
+			cout<<"Elemnt found at index : ";
+			cout<<j<<endl;
+			return;
+		}
+
+		j=chain[j];
+	}
+
+	cout<<"No match found !!";
+	return;
+}
+

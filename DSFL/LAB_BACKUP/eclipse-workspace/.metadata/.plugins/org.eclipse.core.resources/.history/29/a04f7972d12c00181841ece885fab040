@@ -1,0 +1,53 @@
+/*
+ * graph.h
+ *
+ *  Created on: 21-Feb-2018
+ *      Author: e2002
+ */
+#include<iostream>
+#include<string>
+using namespace std;
+
+
+struct frnd
+{
+	string f_name;
+	int dist;
+	frnd * link;
+
+	struct node * current_vertex;
+
+};
+
+struct node
+{
+	string Name;
+	int id;
+	node * down;
+	frnd * next;
+	int visited;
+};
+
+#ifndef ADJ_LIST_H_
+#define ADJ_LIST_H_
+
+class graph
+{
+	node * root;
+	int n;
+	int cost;
+
+public:
+		graph();
+		void create();
+		frnd * add_friend(node *);
+		void display();
+
+		node * search(string);
+		node * min_edge(node *,node *);
+
+		//node * prims();
+		void prim();
+};
+
+#endif /* ADJ_LIST_H_ */

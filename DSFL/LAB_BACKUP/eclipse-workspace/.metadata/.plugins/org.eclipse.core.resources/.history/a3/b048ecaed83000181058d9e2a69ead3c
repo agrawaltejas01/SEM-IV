@@ -1,0 +1,17 @@
+/*
+ * data.h
+ *
+ *  Created on: 26-Mar-2018
+ *      Author: e2002
+ */
+
+#ifndef DATA_H_
+#define DATA_H_
+
+class data {
+public:
+	data();
+	virtual ~data();
+};
+
+#endif /* DATA_H_ */

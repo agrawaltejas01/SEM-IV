@@ -1,0 +1,17 @@
+/*
+ * hash_file.h
+ *
+ *  Created on: 28-Mar-2018
+ *      Author: e2002
+ */
+
+#ifndef HASH_FILE_H_
+#define HASH_FILE_H_
+
+class hash_file {
+public:
+	hash_file();
+	virtual ~hash_file();
+};
+
+#endif /* HASH_FILE_H_ */

@@ -1,0 +1,38 @@
+/*
+ * queues.h
+ *
+ *  Created on: 08-Jan-2018
+ *      Author: e2002
+ */
+
+#ifndef QUEUES_H_
+#define QUEUES_H_
+
+struct node
+{
+	int data;
+	int pri;
+
+	node *link;
+};
+
+class queues
+{
+	node *front,*rear;
+
+	int max=50,id;
+
+	public:
+		queues();
+		int isfull();
+		int isempty();
+
+		void getdata();
+
+		void enqueue();
+		void dequeue();
+
+
+};
+
+#endif /* QUEUES_H_ */

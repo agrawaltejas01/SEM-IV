@@ -1,0 +1,12 @@
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=linux
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:Expression_Conversion,org.eclipse.launchbar.core.descriptorType.default\:test,org.eclipse.launchbar.core.descriptorType.default\:Binary_Tree,org.eclipse.launchbar.core.descriptorType.default\:Priority_Queues,org.eclipse.launchbar.core.descriptorType.default\:Expression_Tree,org.eclipse.launchbar.core.descriptorType.default\:Binary_Search_Tree,org.eclipse.launchbar.core.descriptorType.default\:Kruskal,org.eclipse.launchbar.core.descriptorType.default\:Dijkstra,org.eclipse.launchbar.core.descriptorType.default\:Graph,org.eclipse.launchbar.core.descriptorType.default\:Prim,org.eclipse.launchbar.core.descriptorType.default\:Hashing,org.eclipse.launchbar.core.descriptorType.default\:Hashing_on_file,org.eclipse.launchbar.core.descriptorType.default\:Hashing_files
+eclipse.preferences.version=1
+org.eclipse.launchbar.core.descriptorType.default\:Dijkstra/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:Dijkstra/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.eclipse.launchbar.core.descriptorType.default\:Expression_Conversion/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:Expression_Conversion/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.eclipse.launchbar.core.descriptorType.default\:Prim/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:test/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:test/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local

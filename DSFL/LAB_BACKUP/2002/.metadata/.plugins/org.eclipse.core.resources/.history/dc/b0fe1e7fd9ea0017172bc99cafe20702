@@ -1,0 +1,33 @@
+//============================================================================
+// Name        : Expression_Conversion.cpp
+// Author      : 2002
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include<string>
+#include "stack.h"
+#include "inpost.h"
+#include "inpre.h"
+using namespace std;
+
+int main()
+{
+	stack s;
+	inpost post;
+	prefix pre;
+
+	string arr;
+	string ans;
+
+	cout<<"Enter String :";
+	cin>>arr;
+	cout<<endl;
+
+	//post.infix_to_postfix(arr,s);
+
+	pre.infix_to_prefix(arr,s);
+
+}

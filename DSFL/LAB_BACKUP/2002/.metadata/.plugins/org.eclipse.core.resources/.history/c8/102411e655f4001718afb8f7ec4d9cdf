@@ -1,0 +1,75 @@
+/*
+ * queues.cpp
+ *
+ *  Created on: 08-Jan-2018
+ *      Author: e2002
+ */
+
+#include "queues.h"
+#include<iostream>
+#include<malloc.h>
+#include<string>
+using namespace std;
+
+queues::queues()
+{
+	front=rear=NULL;
+
+	id=1;
+}
+
+int queues:: isfull()
+{
+	node *p;
+	int count;
+	p=front;
+
+	while(p != NULL)
+	{
+		p=p->link;
+		count++;
+	}
+
+	if(count==max)
+			return 1;
+	else
+			return 0;
+
+}
+
+int queues:: isempty()
+{
+	if(front==rear)
+		return 1;
+
+	else
+		return 0;
+
+}
+
+void queues:: enqueue(string a,string ad,string p_n)
+{
+	node *n;
+	n=new node;
+
+	n->data.name=a;
+	n->data.add=ad;
+	n->data.ph_no=p_n;
+
+	n->link=NULL;
+
+	/*n->link=rear;
+	front->link=n;
+
+	rear=n;*/
+
+	rear->link=n;
+
+
+}
+
+void queues:: dequeue()
+{
+
+}
+

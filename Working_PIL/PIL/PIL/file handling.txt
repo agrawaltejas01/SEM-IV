@@ -1,0 +1,494 @@
+
+    Files and how to use them
+
+Files can be opened, read and written to. DOS has some ways of doing
+this which save us the trouble of writing our own routines. Yes, more
+interrupts. Here is a list of helpful functions of interrupt 21h that
+deal with files.
+
+Note: Bits are numbered from right to left.
+
+*Function 3Dh: open file*
+Opens an existing file for reading, writing or appending on the
+specified drive and filename.
+
+*INPUT:*
+
+AH = 3Dh
+AL = bits 0-2 Access mode
+
+    000 = read only
+    001 = write only
+    010 = read/write 
+
+bits 4-6 Sharing mode (DOS 3+)
+
+    000 = compatibility mode
+    001 = deny all
+    010 = deny write
+    011 = deny read
+    100 = deny none 
+
+DS:DX = segment:offset of ASCIIZ pathname
+
+*OUTPUT:*
+
+CF = 0 function is succesful
+AX = handle
+CF = 1 error has occured
+AX = error code
+
+    01h missing file sharing software
+    02h file not found
+    03h path not found or file does not exist
+    04h no handle available
+    05h access denied
+    0Ch access mode not permitted 
+
+What does ASCIIZ mean? An ASCIIZ string like a ASCII string with a zero
+on the end instead of a dollar sign.
+
+Important: Remember to save the file handle it is needed for later.
+
+
+    How to save the file handle
+
+It is important to save the file handle because this is needed to do
+anything with the file. Well how is this done? There are two methods we
+could use: copy the file handle into another register and don't use that
+register or copy it to a variable in memory.
+
+The disadvantages with the first method is that you will have to
+remember not to use the register you saved it in and it wastes a
+register that can be used for something more useful. We are going to use
+the second. This is how it is done:
+
+    FileHandle DW 0 	; use this for saving the file handle
+    .
+    .
+    .
+    mov FileHandle,ax 	; save the file handle
+
+*Function 3Eh: close file*
+Closes a file that has been opened.
+
+*INPUT:*
+
+AX = 3Eh
+BX = file handle
+
+*OUTPUT:*
+
+CF = 0 function is successful
+AX = destroyed
+CF = 1 function not successful
+AX = error code - 06h file not opened or unauthorised handle.
+
+Important: Don't call this function with a zero handle because that will
+close the standard input (the keyboard) and you won't be able to enter
+anything.
+
+*Function 3Fh: read file/device*
+
+Reads bytes from a file or device to a buffer.
+
+*INPUT:*
+
+AH = 3Fh
+BX = handle
+CX = number of bytes to be read
+DS:DX = segment:offset of a buffer
+
+*OUTPUT:*
+
+CF = 0 function is successful
+AX = number of bytes read
+CF = 1 an error has occurred
+
+    05h access denied
+    06h illegal handle or file not opened 
+
+If CF = 0 and AX = 0 then the file pointer was already at the end of the
+file and no more can be read. If CF = 0 and AX is smaller than CX then
+only part was read because the end of the file was reached or an error
+occurred.
+
+This function can also be used to get input from the keyboard. Use a
+handle of 0, and it stops reading after the first carriage return, or
+once a specified number of characters have been read. This is a good and
+easy method to use to only let the user enter a certain amount of
+characters.
+
+    Listing 7: READFILE.ASM
+
+    ; a program to demonstrate creating a file and then reading from
+    ; it
+
+    .model small
+    .stack
+    .code 
+
+    mov ax,@data 		; base address of data segment
+    mov ds,ax 		; put this in ds
+
+    mov dx,OFFSET FileName 	; put address of filename in dx 
+    mov al,2 		; access mode - read and write
+    mov ah,3Dh 		; function 3Dh -open a file
+    int 21h 		; call DOS service
+
+    mov Handle,ax 		; save file handle for later
+    jc ErrorOpening 	; jump if carry flag set - error!
+
+    mov dx,offset Buffer 	; address of buffer in dx
+    mov bx,Handle 		; handle in bx
+    mov cx,100 		; amount of bytes to be read
+    mov ah,3Fh 		; function 3Fh - read from file
+    int 21h 		; call dos service
+
+    jc ErrorReading 	; jump if carry flag set - error! 
+
+    mov bx,Handle 		; put file handle in bx 
+    mov ah,3Eh 		; function 3Eh - close a file
+    int 21h 		; call DOS service
+
+    mov cx,100 		; length of string
+    mov si,OFFSET Buffer 	; DS:SI - address of string
+    xor bh,bh 		; video page - 0
+    mov ah,0Eh 		; function 0Eh - write character
+
+    NextChar:
+
+    lodsb 			; AL = next character in string
+    int 10h 		; call BIOS service
+    loop NextChar
+
+    mov ax,4C00h 		; terminate program 
+    int 21h 
+
+    ErrorOpening:
+
+    mov dx,offset OpenError ; display an error 
+    mov ah,09h 		; using function 09h
+    int 21h 		; call DOS service
+    mov ax,4C01h 		; end program with an errorlevel =1 
+    int 21h 
+
+    ErrorReading:
+    mov dx,offset ReadError ; display an error 
+    mov ah,09h 		; using function 09h
+    int 21h 		; call DOS service
+    mov ax,4C02h 		; end program with an errorlevel =2 
+    int 21h
+
+    .data
+    Handle DW ? 			; to store file handle 
+    FileName DB "C:\test.txt",0 	; file to be opened
+    OpenError DB "An error has occured(opening)!$"
+    ReadError DB "An error has occured(reading)!$"
+    Buffer DB 100 dup (?) 	; buffer to store data
+
+    END
+
+*Function 3Ch: Create file*
+
+Creates a new empty file on a specified drive with a specified pathname.
+
+*INPUT:*
+
+AH = 3Ch
+CX = file attribute
+
+    bit 0 = 1 read-only file
+    bit 1 = 1 hidden file
+    bit 2 = 1 system file
+    bit 3 = 1 volume (ignored)
+    bit 4 = 1 reserved (0) - directory
+    bit 5 = 1 archive bit
+    bits 6-15 reserved (0) 
+
+DS:DX = segment:offset of ASCIIZ pathname
+
+*OUTPUT:*
+
+CF = 0 function is successful
+AX = handle
+CF = 1 an error has occurred
+
+    03h path not found
+    04h no available handle
+    05h access denied 
+
+Important: If a file of the same name exists then it will be lost. Make
+sure that there is no file of the same name. This can be done with the
+function below.
+
+*Function 4Eh: find first matching file*
+
+Searches for the first file that matches the filename given.
+
+*INPUT:*
+
+AH = 4Eh CX = file attribute mask (bits can be combined)
+
+    bit 0 = 1 read only
+    bit 1 = 1 hidden
+    bit 2 = 1 system
+    bit 3 = 1 volume label
+    bit 4 = 1 directory
+    bit 5 = 1 archive
+    bit 6-15 reserved 
+
+DS:DX = segment:offset of ASCIIZ pathname
+
+*OUTPUT:*
+
+CF = 0 function is successful
+[DTA] Disk Transfer Area = FindFirst data block
+
+*The DTA block:*
+
+*Offset   Size in bytes   Meaning*
+
+0        21              Reserved
+21       1               File attributes
+22       2               Time last modified
+24       2               Date last modified
+26       4               Size of file (in bytes)
+30       13              File name (ASCIIZ)
+
+An example of checking if file exists:
+
+    File DB "C:\file.txt",0	  ; name of file that we want
+    mov dx,OFFSET File 	  ; address of filename
+    mov cx,3Fh 		  ; file mask 3Fh - any file
+    mov ah,4Eh 		  ; function 4Eh - find first file
+    int 21h 		  ; call DOS service
+
+    jc NoFile
+
+    ; print message saying file exists
+
+    NoFile:
+
+    ; continue with creating file
+
+This is an example of creating a file and then writing to it.
+
+    Listing 8: CREATE.ASM
+    ; This example program creates a file and then writes to it.
+    .model small
+    .stack
+    .code 
+
+    mov ax,@data 	; base address of data segment
+    mov ds,ax 	; put it in ds
+    mov dx,offset StartMessage 
+    mov ah,09h 
+    int 21h 
+
+    mov dx,offset FileName 	; put offset of filename in dx 
+    xor cx,cx 		; clear cx - make ordinary file
+    mov ah,3Ch 		; function 3Ch - create a file
+    int 21h 		; call DOS service
+
+    jc CreateError 		; jump if there is an error
+
+    mov dx,offset FileName 	; put offset of filename in dx
+    mov al,2 		; access mode -read and write
+    mov ah,3Dh 		; function 3Dh - open the file
+    int 21h 		; call dos service
+
+    jc OpenError 		; jump if there is an error
+    mov Handle,ax 		; save value of handle 
+
+    mov dx,offset WriteMe 	; address of information to write 
+    mov bx,Handle 		; file handle for file
+    mov cx,38 		; 38 bytes to be written
+    mov ah,40h 		; function 40h - write to file
+    int 21h 		; call dos service
+
+    jc WriteError 		; jump if there is an error
+    cmp ax,cx 		; was all the data written?
+    jne WriteError 		; no it wasn't - error!
+
+    mov bx,Handle 		; put file handle in bx 
+    mov ah,3Eh 		; function 3Eh - close a file
+    int 21h 		; call dos service
+
+    mov dx,offset EndMessage 
+    mov ah,09h 
+    int 21h 
+
+    ReturnToDOS:
+
+    mov ax,4C00h 		; terminate program 
+    int 21h 
+
+    WriteError:
+    mov dx,offset WriteMessage 
+    jmp EndError
+
+    OpenError:
+    mov dx,offset OpenMessage 
+    jmp EndError
+
+    CreateError:
+    mov dx,offset CreateMessage 
+
+    EndError:
+    mov ah,09h 
+    int 21h 
+    mov ax,4C01h 
+    int 21h 
+
+    .data 
+    CR equ 13
+    LF equ 10
+
+    StartMessage DB "This program creates a file called NEW.TXT"
+    	     DB ,"on the C drive.$"
+
+    EndMessage DB CR,LF,"File create OK, look at file to"
+    	   DB ,"be sure.$"
+
+    WriteMessage  DB "An error has occurred (WRITING)$"
+    OpenMessage   DB "An error has occurred (OPENING)$"
+    CreateMessage DB "An error has occurred (CREATING)$"
+
+    WriteMe  DB "HELLO, THIS IS A TEST, HAS IT WORKED?",0
+    FileName DB "C:\new.txt",0 ; name of file to open 
+    Handle   DW ? 	; to store file handle 
+
+    END
+
+This is an example of how to delete a file after checking it exists:
+
+
+    Listing 9: DELFILE.ASM
+    ; a demonstration of how to delete a file. The file new.txt on
+    ; c: is deleted (this file is created by create.exe). We also 
+    ; check if the file exits before trying to delete it
+
+    .model small
+    .stack
+    .data
+
+    CR equ 13
+    LF equ 10
+
+    File 	db "C:\new.txt",0 
+    Deleted db "Deleted file c:\new.txt$"
+    NoFile 	db "c:\new.txt doesn't exits - exiting$"
+    ErrDel 	db "Can't delete file - probably write protected$"
+
+    .code
+
+    mov ax,@data 
+    mov ds,ax 
+
+    mov dx,OFFSET File 	; address of filename to look for
+    mov cx,3Fh 		; file mask 3Fh - any file
+    mov ah,4Eh 		; function 4Eh - find first file
+    int 21h 		; call dos service
+    jc FileDontExist
+
+    mov dx,OFFSET File 	; DS:DX points to file to be killed 
+    mov ah,41h 		; function 41h - delete file
+    int 21h 		; call DOS service
+    jc ErrorDeleting 	; jump if there was an error
+
+    mov dx,OFFSET Deleted 	; display message 
+    jmp Endit
+
+    ErrorDeleting:
+    mov dx,OFFSET ErrDel 
+    jmp Endit
+
+    FileDontExist:
+    mov dx,OFFSET NoFile 
+
+    EndIt:
+    mov ah,9
+    int 21h
+    mov ax,4C00h 		; terminate program and exit to DOS
+    int 21h 		; call DOS service
+    end
+
+
+    Using the FindFirst and FindNext Functions
+
+    Listing 10: DIRC.ASM
+
+    ; this program demonstrates how to look for files. It prints
+    ; out the names of all the files in the c:\drive and names of
+    ; the sub-directories
+
+    .model small
+    .stack
+    .data
+
+    FileName db "c:\*.*",0 ;file name
+    DTA 	 db 128 dup(?) ;buffer to store the DTA 
+    ErrorMsg db "An Error has occurred - exiting.$"
+
+    .code
+
+    mov ax,@data 	; set up ds to be equal to the 
+    mov ds,a 	; data segment
+    mov es,ax 	; also es
+
+    mov dx,OFFSET DTA 	; DS:DX points to DTA 
+    mov ah,1AH 		; function 1Ah - set DTA
+    int 21h 		; call DOS service
+
+    mov cx,3Fh 		; attribute mask - all files
+    mov dx,OFFSET FileName 	; DS:DX points ASCIZ filename
+    mov ah,4Eh 		; function 4Eh - find first
+    int 21h 		; call DOS service
+
+    jc error 	; jump if carry flag is set
+
+    LoopCycle:
+
+    mov dx,OFFSET FileName 	; DS:DX points to file name
+    mov ah,4Fh 		; function 4fh - find next
+    int 21h 		; call DOS service
+
+    jc exit 	; exit if carry flag is set
+
+    mov cx,13 		; length of filename
+    mov si,OFFSET DTA+30 	; DS:SI points to filename in DTA
+    xor bh,bh 		; video page - 0
+    mov ah,0Eh 		; function 0Eh - write character
+
+    NextChar:
+
+    lodsb 		; AL = next character in string
+    int 10h 	; call BIOS service
+
+    loop NextChar
+
+    mov di,OFFSET DTA+30 	; ES:DI points to DTA
+    mov cx,13 		; length of filename
+    xor al,al 		; fill with zeros
+    rep stosb 		; erase DTA
+
+    jmp LoopCycle 	; continue searching
+
+    error: 
+
+    mov dx,OFFSET ErrorMsg 	; display error message
+    mov ah,9
+    int 21h
+
+    exit:
+
+    mov ax,4C00h 	; exit to DOS
+    int 21h
+
+    end
+
+
+      Return to Table of Contents
+      <https://stuff.pypt.lt/ggt80x86a/asm1.htm#toc>
+

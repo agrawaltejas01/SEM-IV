@@ -1,0 +1,26 @@
+/*
+ * graph.h
+ *
+ *  Created on: 12-Mar-2018
+ *      Author: e2002
+ */
+
+#ifndef GRAPH_H_
+#define GRAPH_H_
+
+class graph
+{
+	int n,e;
+	int graph[10][10];
+
+public:
+	graph();
+	void getdata();
+	void print_adj_matrix();
+
+	void kruskal();
+
+
+};
+
+#endif /* GRAPH_H_ */

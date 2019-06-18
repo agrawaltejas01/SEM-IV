@@ -1,0 +1,26 @@
+//============================================================================
+// Name        : Priority_Queue.cpp
+// Author      : 2002
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include "queues.h"
+using namespace std;
+
+int main()
+{
+
+	queues q;
+
+	for(int i=0;i<3;i++)
+		q.enqueue();
+
+	//q.display();
+
+	q.dequeue();
+
+	return 0;
+}

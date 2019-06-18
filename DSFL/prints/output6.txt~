@@ -1,0 +1,144 @@
+	MENU
+		1.Create
+		2.Display
+		3.Friends
+		4.Comments
+		5.Date of birth
+		6.Exit
+
+Enter Choice : 1
+
+Enter number of users in your network : 4
+
+Enter Data of 1st Person : 
+
+Enter Name : A
+
+Enter Date of Birth(DD/MM/YYYY) : 2 2 1998
+
+Enter post : 5
+
+
+Enter data of person no. 2 : 
+
+Enter Name : B
+
+Enter Date of Birth(DD/MM/YYYY) : 3 2 2002
+
+Enter post : 6
+
+
+Enter data of person no. 3 : 
+
+Enter Name : C
+
+Enter Date of Birth(DD/MM/YYYY) : 1 1 1989
+
+Enter post : 50
+
+
+Enter data of person no. 4 : 
+
+Enter Name : D
+
+Enter Date of Birth(DD/MM/YYYY) : 9 9 2010
+
+Enter post : 10
+
+
+Enter Name of 1st friend of A : B
+
+More friends?(Y/N) of A : y
+
+Enter name of frind  no. 2 : D
+
+More friends?(Y/N) of A : n
+
+Enter Name of 1st friend of B : A
+
+More friends?(Y/N) of B : y
+
+Enter name of frind  no. 2 : C
+
+More friends?(Y/N) of B : y
+
+Enter name of frind  no. 3 : D
+
+More friends?(Y/N) of B : n
+
+Enter Name of 1st friend of C : B
+
+More friends?(Y/N) of C : n
+
+Enter Name of 1st friend of D : A
+
+More friends?(Y/N) of D : y
+
+Enter name of frind  no. 2 : B
+
+More friends?(Y/N) of D : n
+
+	MENU
+		1.Create
+		2.Display
+		3.Friends
+		4.Comments
+		5.Date of birth
+		6.Exit
+
+Enter Choice : 2
+
+A<- B<- D
+B<- A<- C<- D
+C<- B
+D<- A<- B
+NULL
+	MENU
+		1.Create
+		2.Display
+		3.Friends
+		4.Comments
+		5.Date of birth
+		6.Exit
+
+Enter Choice : 3
+
+User having maximum friends : B
+Number of B has is : 3
+	MENU
+		1.Create
+		2.Display
+		3.Friends
+		4.Comments
+		5.Date of birth
+		6.Exit
+
+Enter Choice : 4
+
+Maximum comments have been made by : C
+Number of comments made by C is 50
+
+Minimum comments have been made by : A
+Number of comments made by A is 5
+	MENU
+		1.Create
+		2.Display
+		3.Friends
+		4.Comments
+		5.Date of birth
+		6.Exit
+
+Enter Choice : 5
+
+Enter month you are intrested in  : 2
+
+Number of people having date of birth in month 2 : 2
+	MENU
+		1.Create
+		2.Display
+		3.Friends
+		4.Comments
+		5.Date of birth
+		6.Exit
+
+Enter Choice : 6

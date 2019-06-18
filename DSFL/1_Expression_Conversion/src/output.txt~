@@ -1,0 +1,121 @@
+	MENU
+		1.Enter Expression
+		2.Infix To Postfix
+		3.Infix To Prefix
+		4.Postfix Evaluation
+		5.Prefix Evaluation
+		6.Re_Enter
+		7.Exit
+Enter Choice : 1
+
+
+		Enter String in infix form :(a+b)*(c+d)
+
+
+	MENU
+		1.Enter Expression
+		2.Infix To Postfix
+		3.Infix To Prefix
+		4.Postfix Evaluation
+		5.Prefix Evaluation
+		6.Re_Enter
+		7.Exit
+Enter Choice : 2
+
+
+		Postfix Version  of Given Expression is : ab+cd+*
+
+	MENU
+		1.Enter Expression
+		2.Infix To Postfix
+		3.Infix To Prefix
+		4.Postfix Evaluation
+		5.Prefix Evaluation
+		6.Re_Enter
+		7.Exit
+Enter Choice : 3
+
+
+		Prefix Version  of Given Expression is : *+ab+cd
+
+	MENU
+		1.Enter Expression
+		2.Infix To Postfix
+		3.Infix To Prefix
+		4.Postfix Evaluation
+		5.Prefix Evaluation
+		6.Re_Enter
+		7.Exit
+Enter Choice : 1
+
+
+		Enter String in infix form :a^b^c
+
+
+	MENU
+		1.Enter Expression
+		2.Infix To Postfix
+		3.Infix To Prefix
+		4.Postfix Evaluation
+		5.Prefix Evaluation
+		6.Re_Enter
+		7.Exit
+Enter Choice : 2
+
+
+		Postfix Version  of Given Expression is : abc^^
+
+	MENU
+		1.Enter Expression
+		2.Infix To Postfix
+		3.Infix To Prefix
+		4.Postfix Evaluation
+		5.Prefix Evaluation
+		6.Re_Enter
+		7.Exit
+Enter Choice : 3
+
+
+		Prefix Version  of Given Expression is : ^a^bc
+
+	MENU
+		1.Enter Expression
+		2.Infix To Postfix
+		3.Infix To Prefix
+		4.Postfix Evaluation
+		5.Prefix Evaluation
+		6.Re_Enter
+		7.Exit
+Enter Choice : 4
+
+
+		Enter String in postfix Form(With Single Digits as operands) :23+45-*
+
+
+		Answer of Given Expression is : -5
+
+	MENU
+		1.Enter Expression
+		2.Infix To Postfix
+		3.Infix To Prefix
+		4.Postfix Evaluation
+		5.Prefix Evaluation
+		6.Re_Enter
+		7.Exit
+Enter Choice : 5
+
+
+		Enter String in prefix Form(With Single Digits as operands) :*+23+45
+
+
+		Answer of Given Expression is : 45
+
+	MENU
+		1.Enter Expression
+		2.Infix To Postfix
+		3.Infix To Prefix
+		4.Postfix Evaluation
+		5.Prefix Evaluation
+		6.Re_Enter
+		7.Exit
+Enter Choice : 7

@@ -1,0 +1,188 @@
+/*
+ * queues.cpp
+ *
+ *  Created on: 08-Jan-2018
+ *      Author: e2002
+ */
+
+#include "queues.h"
+#include<iostream>
+#include<malloc.h>
+#include<string>
+using namespace std;
+
+queues::queues()
+{
+	front=rear=NULL;
+
+	id=1;
+}
+
+int queues:: isfull()
+{
+	node *p;
+	int count;
+	p=front;
+	while(p != NULL)
+	{
+		p=p->link;
+		count++;
+	}
+
+	if(count==max)
+			return 1;
+	else
+			return 0;
+
+}
+
+int queues:: isempty()
+{
+	if(rear==NULL)
+		return 1;
+
+	else
+		return 0;
+
+}
+
+void queues:: enqueue()
+{
+	node *n;
+	n=new node;
+
+	cout<<"Enter Name of Patient : ";
+	cin>>n->name;
+	cout<<endl;
+
+	cout<<"Enter Address of Patient : ";
+	cin>>n->add;
+	cout<<endl;
+
+	cout<<"Enter Phone Number of Patient : ";
+	cin>>n->ph_no;
+	cout<<endl;
+
+	cout<<"Enter Priority of Patient : ";
+	cin>>n->pri;
+	cout<<endl;
+
+	n->link=NULL;
+
+	if(isempty())
+		front=rear=n;
+
+	else
+	{
+		rear->link=n;
+		rear=n;
+	}
+
+
+}
+
+int queues::check(int temp)
+{
+	/*if(temp==4)
+		return -1;
+
+	node *p;
+
+	p=front;
+	int count=0;
+
+	while(p!=NULL)
+	{
+		if(p->pri==temp)
+			return count;
+
+		else
+			p=p->link;
+	}
+
+	if(p==NULL)
+		return check(temp+1);*/
+
+	node *p;
+
+	p=front;
+
+	int min=3,pos=0,count=0;
+
+	while(p != NULL)
+	{
+		if(p->pri < min)
+		{
+			pos=count;
+			min=p->pri;
+		}
+
+		else
+			count++;
+	}
+
+	return pos;
+}
+
+void queues:: dequeue()
+{
+	int pos;
+
+	pos=check(1);
+
+	node *p,*temp;
+
+	p=front;
+	temp=front;
+
+	if(pos==-1)
+	{
+		cout<<"Empty!!\n";
+		return;
+	}
+
+	if(pos==0)
+	{
+		cout<<"Name : "<<front->name<<endl;
+		cout<<"Address : "<<front->add<<endl;
+		cout<<"Phone Number: "<<front->ph_no<<endl;
+
+		front=front->link;
+	}
+
+	else
+	{
+		while(pos--)
+		{
+			temp=p;
+			p=p->link;
+
+		}
+
+		temp->link=p->link;
+
+		cout<<"Name : "<<p->name<<endl;
+		cout<<"Address : "<<p->add<<endl;
+		cout<<"Phone Number: "<<p->ph_no<<endl;
+
+		delete p;
+	}
+}
+
+void queues:: display()
+{
+	node *p;
+
+	p=front;
+
+	while(p != NULL)
+	{
+		cout<<"Name : "<<p->name<<endl;
+		cout<<"Address : "<<p->add<<endl;
+		cout<<"Phone Number: "<<p->ph_no<<endl;
+
+		p=p->link;
+	}
+
+	cout<<endl;
+}

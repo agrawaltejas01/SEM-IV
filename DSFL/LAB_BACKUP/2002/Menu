@@ -1,0 +1,57 @@
+do
+	{
+		int ch;
+		cout<<"\tMENU\n";
+
+		cout<<"\t\t1.\n\t\t2.\n\t\t3.\n\t\t4.\n\t\t5.\n\t\t6.Re_Enter\n\t\t7.Exit\n";
+		cout<<"Enter Choice : ";
+		cin>>ch;
+		cout<<endl;
+
+		switch(ch)
+		{
+		case 1:
+		{
+
+			break;
+		}
+
+		case 2:
+				{
+
+					break;
+				}
+
+		case 3:
+				{
+
+					break;
+				}
+
+		case 4:
+				{
+
+					break;
+				}
+
+		case 5:
+				{
+
+					break;
+				}
+
+		case 6:
+				{
+					main();
+					break;
+				}
+
+		case 7:
+				{
+					exit(0);
+					break;
+				}
+
+		}
+	}
+	while(1);

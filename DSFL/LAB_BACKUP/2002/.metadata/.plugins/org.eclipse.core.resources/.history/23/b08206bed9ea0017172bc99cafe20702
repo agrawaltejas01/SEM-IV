@@ -1,0 +1,30 @@
+/*
+ * inpre.cpp
+ *
+ *  Created on: 27-Dec-2017
+ *      Author: e2002
+ */
+
+#include "inpre.h"
+#include "inpost.h"
+#include "stack.h"
+#include <string>
+#include <iostream>
+using namespace std;
+
+void inpre :: infix_to_prefix(string arr,stack s)
+{
+	string ans;
+
+	int len=arr.length();
+
+	for(int i=0,j=len-1;i<len,j>=0;i++,j--)
+		ans[j]=arr[i];
+
+	inpost post;
+
+	post.infix_to_postfix(ans,s);
+}
+
+
+

@@ -1,0 +1,18 @@
+/*
+ * graph.cpp
+ *
+ *  Created on: 12-Mar-2018
+ *      Author: e2002
+ */
+
+#include "graph.h"
+
+graph::graph() {
+	// TODO Auto-generated constructor stub
+
+}
+
+graph::~graph() {
+	// TODO Auto-generated destructor stub
+}
+

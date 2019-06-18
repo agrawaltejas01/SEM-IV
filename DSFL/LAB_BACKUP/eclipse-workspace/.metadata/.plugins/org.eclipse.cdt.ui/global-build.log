@@ -1,0 +1,15 @@
+13:01:49 **** Incremental Build of configuration Debug for project Hashing_files ****
+make all 
+Building file: ../src/hash_file.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/hash_file.d" -MT"src/hash_file.o" -o "src/hash_file.o" "../src/hash_file.cpp"
+Finished building: ../src/hash_file.cpp
+ 
+Building target: Hashing_files
+Invoking: GCC C++ Linker
+g++  -o "Hashing_files"  ./src/Hashing_files.o ./src/hash_file.o ./src/student.o   
+Finished building target: Hashing_files
+ 
+13:01:51 **** Incremental Build of configuration Debug for project Hashing_files ****
+make all 
+make: Nothing to be done for 'all'.

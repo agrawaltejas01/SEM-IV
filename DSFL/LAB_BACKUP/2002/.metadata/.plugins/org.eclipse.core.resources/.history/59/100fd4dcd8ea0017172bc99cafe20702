@@ -1,0 +1,22 @@
+/*
+ * inpre.h
+ *
+ *  Created on: 27-Dec-2017
+ *      Author: e2002
+ */
+
+#ifndef INPRE_H_
+#define INPRE_H_
+#include <string>
+#include "stack.h"
+#include <iostream>
+using namespace std;
+
+
+class inpre {
+public:
+	inpre();
+	virtual ~inpre();
+};
+
+#endif /* INPRE_H_ */

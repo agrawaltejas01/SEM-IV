@@ -1,0 +1,18 @@
+/*
+ * hash_file.cpp
+ *
+ *  Created on: 28-Mar-2018
+ *      Author: e2002
+ */
+
+#include "hash_file.h"
+
+hash_file::hash_file() {
+	// TODO Auto-generated constructor stub
+
+}
+
+hash_file::~hash_file() {
+	// TODO Auto-generated destructor stub
+}
+

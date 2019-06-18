@@ -1,0 +1,84 @@
+ # include <stdio.h>
+ # include <conio.h>
+ # include   <dos.h>
+
+ const int DeleteFile(const char*  );
+
+ int main( )
+ {
+    int ch;
+
+    char* File=NULL;
+
+    clrscr( );
+    printf("-------------MENU----------------\n");
+    printf("1)to delte a file\n");
+    printf("2)to create a directory\n");
+    printf("3)to copy a file\n");
+    scanf("%d",&ch);
+    do
+    {
+	switch(ch)
+	{
+	 case 1://to delete a file
+		 printf(" Enter the File Path and Name to delete = ");
+		 scanf("%s",File);
+
+		 if(DeleteFile(File))
+		 printf("\n Error : Unable to delete the file.");
+
+		 else
+		 printf("\n The File is deleted sucessfully.");
+
+		 getch( );
+		 break;
+	case 2:// to create a dirctory
+	       printf("\nEnter the file path and path to create file:");
+	       scanf("%s",File);
+
+	       if(Createdir(File))
+	       printf("\nerror") ;
+	       else
+	       printf("file created successfully\n");
+	       getch();
+	       break;
+
+       case 3://to  copy a file
+		printf("\n Enter the file name and path to copy the file");
+		scanf("%s",File);
+		getch();
+		break;
+
+       }
+       }while(ch!=4);
+
+    return 0;
+
+    }
+    const int Createdir(const char* File)
+    {
+	union REGS InReg;
+	union REGS OutReg;
+	struct SREGS SegReg;
+
+	InReg.h.ah=0x39;
+	InReg.x.dx=FP_OFF(File);
+	SegReg.ds=FP_SEG(File);
+
+	intdosx(&InReg,&OutReg,&SegReg);
+	return OutReg.x.cflag;
+
+     }
+
+    const int DeleteFile(const char* File)
+ {
+    union REGS InReg;
+    union REGS OutReg;
+
+    InReg.h.ah=0x41;
+    InReg.x.dx=FP_OFF(File);
+
+    int86(0x21,&InReg,&OutReg);
+
+    return OutReg.x.cflag;
+ }

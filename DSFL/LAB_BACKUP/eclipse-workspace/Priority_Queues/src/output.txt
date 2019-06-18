@@ -1,0 +1,235 @@
+
+
+---------Menu-----------
+
+		1.Add Patient
+		2.Display List
+		3.Choose patient for Treatment
+		4.Exit
+
+		Enter Your Choice : 1
+
+Enter Name of Patient : Tejas
+
+Enter Address of Patient : Katraj
+
+Enter Phone Number of Patient : 6541684169
+
+Enter Disease of Patient : 
+
+	1.Cancer
+	2.Accident
+	3.Blood Pressure
+	4.Sugar
+	5.Fever
+	6.Cold
+	Enter Option from Above Serviced Disease : 1
+
+
+
+
+---------Menu-----------
+
+		1.Add Patient
+		2.Display List
+		3.Choose patient for Treatment
+		4.Exit
+
+		Enter Your Choice : 2
+
+                NAME                ADDRESS             PHONE NO            DISEASE             PRIORITY
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+               Tejas               Katraj               6541684169               Cancer               1
+
+
+
+
+---------Menu-----------
+
+		1.Add Patient
+		2.Display List
+		3.Choose patient for Treatment
+		4.Exit
+
+		Enter Your Choice : 3
+
+Name : Tejas
+Address : Katraj
+Phone Number: 6541684169
+Disease : Cancer
+Priority : 1
+
+
+---------Menu-----------
+
+		1.Add Patient
+		2.Display List
+		3.Choose patient for Treatment
+		4.Exit
+
+		Enter Your Choice : 1
+
+Enter Name of Patient : Tejas
+
+Enter Address of Patient : Katraj
+
+Enter Phone Number of Patient : 
+1616654254
+
+Enter Disease of Patient : 
+
+	1.Cancer
+	2.Accident
+	3.Blood Pressure
+	4.Sugar
+	5.Fever
+	6.Cold
+	Enter Option from Above Serviced Disease : 5
+
+
+
+
+---------Menu-----------
+
+		1.Add Patient
+		2.Display List
+		3.Choose patient for Treatment
+		4.Exit
+
+		Enter Your Choice : 1
+
+Enter Name of Patient : Akhil
+
+Enter Address of Patient : SadashivPeth
+
+Enter Phone Number of Patient : 654194987465
+
+Enter Disease of Patient : 
+
+	1.Cancer
+	2.Accident
+	3.Blood Pressure
+	4.Sugar
+	5.Fever
+	6.Cold
+	Enter Option from Above Serviced Disease : 2
+
+
+
+
+---------Menu-----------
+
+		1.Add Patient
+		2.Display List
+		3.Choose patient for Treatment
+		4.Exit
+
+		Enter Your Choice : 1
+
+Enter Name of Patient : Sagar
+
+Enter Address of Patient : ShivajiNagar
+
+Enter Phone Number of Patient : 6514986564
+
+Enter Disease of Patient : 
+
+	1.Cancer
+	2.Accident
+	3.Blood Pressure
+	4.Sugar
+	5.Fever
+	6.Cold
+	Enter Option from Above Serviced Disease : 4
+
+
+
+
+---------Menu-----------
+
+		1.Add Patient
+		2.Display List
+		3.Choose patient for Treatment
+		4.Exit
+
+		Enter Your Choice : 2
+
+                NAME                ADDRESS             PHONE NO            DISEASE             PRIORITY
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+               Tejas               Katraj               1616654254               Fever               3
+
+               Akhil               SadashivPeth         654194987465               Accident          1
+
+               Sagar               ShivajiNagar         6514986564               Sugar               2
+
+
+
+
+---------Menu-----------
+
+		1.Add Patient
+		2.Display List
+		3.Choose patient for Treatment
+		4.Exit
+
+		Enter Your Choice : 3
+
+Name : Akhil
+Address : SadashivPeth
+Phone Number: 654194987465
+Disease : Accident
+Priority : 1
+
+
+---------Menu-----------
+
+		1.Add Patient
+		2.Display List
+		3.Choose patient for Treatment
+		4.Exit
+
+		Enter Your Choice : 3
+
+Name : Sagar
+Address : ShivajiNagar
+Phone Number: 6514986564
+Disease : Sugar
+Priority : 2
+
+
+---------Menu-----------
+
+		1.Add Patient
+		2.Display List
+		3.Choose patient for Treatment
+		4.Exit
+
+		Enter Your Choice : 3
+
+Name : Tejas
+Address : Katraj
+Phone Number: 1616654254
+Disease : Fever
+Priority : 3
+
+
+---------Menu-----------
+
+		1.Add Patient
+		2.Display List
+		3.Choose patient for Treatment
+		4.Exit
+
+		Enter Your Choice : 2
+
+No Patient For Treatment
+
+
+---------Menu-----------
+
+		1.Add Patient
+		2.Display List
+		3.Choose patient for Treatment
+		4.Exit
+
+		Enter Your Choice : 4

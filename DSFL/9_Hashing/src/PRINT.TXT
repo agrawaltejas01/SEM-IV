@@ -1,0 +1,1038 @@
+//============================================================================
+// Name        : Hashing.cpp
+// Author      : 
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include "student.h"
+#include "replace.h"
+#include "no_replace.h"
+#include<stdlib.h>
+using namespace std;
+
+int main()
+{
+	student s[10];
+	do
+	{
+		cout<<"------MENU-------\n\n";
+		cout<<"\t1.With Replacement\n\t2.Without Replacement\n\t3.exit\n\n";
+		cout<<"Enter your choice : ";
+		int opt;
+		cin>>opt;
+		cout<<endl;
+
+		switch(opt)
+		{
+				case 1:
+				{
+					replace r;
+					do
+					{
+						cout<<"\t\t-----With Replacement------\n";
+						cout<<"\t\t\t1.Insert\n\t\t\t2.Display\n\t\t\t3.Search\n\t\t\t4.Main Menu\n\n";
+						cout<<"Enter your choice : ";
+
+						int ch;
+						cin>>ch;
+
+						switch(ch)
+						{
+							case 1 :    s[0].create(s);
+										r.insert(s,s[0].n);
+										cout<<"IGI\n";
+										break;
+
+							case 2 :    r.display();
+										break;
+
+							case 3 :	long long int x;
+										cout<<"Enter a phone number you want to search : ";
+										cin>>x;
+										r.search(x);
+										cout<<endl;
+										break;
+
+							case 4 :    main();
+
+						}
+					}
+					while(1);
+				}
+				break;
+
+				case 2:
+				{
+					no_replace r;
+					do
+					{
+						cout<<"\t\t-----Without Replacement------\n";
+						cout<<"\t\t\t1.Insert\n\t\t\t2.Display\n\t\t\t3.Search\n\t\t\t4.Main Menu\n\n";
+						cout<<"Enter your choice : ";
+
+						int ch;
+						cin>>ch;
+
+						switch(ch)
+						{
+							case 1 :    s[0].create(s);
+										r.insert(s,s[0].n);
+										cout<<"IGI\n";
+										break;
+
+							case 2 :    r.display();
+										break;
+
+							case 3 :	long long int x;
+										cout<<"Enter a phone number you want to search : ";
+										cin>>x;
+										r.search(x);
+										cout<<endl;
+										break;
+
+							case 4 :    main();
+
+						}
+					}
+					while(1);
+				}
+				break;
+
+				case 3 : exit(0);
+		}
+	}
+	while(1);
+
+	return 0;
+}
+
+/*
+ * no_replace.cpp
+ *
+ *  Created on: 18-Mar-2018
+ *      Author: deception
+ */
+
+#include "no_replace.h"
+#include "student.h"
+#include<iostream>
+#include<string>
+#include<iomanip>
+using namespace std;
+
+no_replace::no_replace()
+{
+	for(int i=0;i<20;i++)
+		{
+			flag[i]=0;
+			chain[i]=-1;
+		}
+
+		size=0;
+}
+
+int no_replace :: hash(long long int x)
+{
+	//return (x%size);
+	return x%10;
+}
+
+void no_replace:: insert(student s[],int n)
+{
+	size=n;
+	for(int stud_idx=0;stud_idx<size;stud_idx++)
+	{
+		int i=0,start;
+		start=hash(s[stud_idx].no);
+
+		while(flag[start])				//locate begining
+		{
+			if(hash(data[start].no) == hash(s[stud_idx].no))
+				break;
+
+			i++;
+			start=hash(start+1);
+		}
+
+		int j=start;
+
+		while(chain[j] != -1)	//go to end of chain or empty location
+			j=chain[j];
+
+		int curr_loc=j;
+
+		while(flag[curr_loc])
+		{
+			curr_loc=hash(curr_loc+1);
+			i++;
+		}
+
+		data[curr_loc]=s[stud_idx];
+		flag[curr_loc]=1;
+
+		if(j != curr_loc)
+			chain[j]=curr_loc;
+
+
+	}
+}
+
+void no_replace :: display()
+{
+	cout<<setw(10)<<"Name"<<setw(15)<<"Phone no."<<setw(15)<<"Chain"<<endl;
+	cout<<"---------------------------------------------------------------------";
+	cout<<endl;
+
+	for(int i=0;i<10;i++)
+	//for(int i=0;i<size;i++)
+	{
+			if(flag[i])
+				cout<<setw(10)<<data[i].name<<setw(15)<<data[i].no<<setw(15)<<chain[i]<<endl;
+
+			else
+				cout<<setw(10)<<"----"<<setw(15)<<"----"<<setw(15)<<chain[i]<<endl;
+	}
+}
+
+
+void no_replace :: search(long long int x)
+{
+	int i=0,j;
+	j=hash(x);
+
+	while(i<size && flag[j] && hash(data[j].no)!=hash(x))
+	{
+		i++;
+		j=hash(j+1);
+	}
+
+	if( !flag[j] || i==size)
+	{
+		cout<<"No match found !!";
+		return;
+	}
+
+	while(j!=-1)
+	{
+		if(data[j].no == x)
+		{
+			cout<<"Element found at index : ";
+			cout<<j<<endl;
+			return;
+		}
+
+		j=chain[j];
+	}
+
+	cout<<"No match found !!";
+	return;
+}
+
+
+//============================================================================
+// Name        : Hashing.cpp
+// Author      : 
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include "student.h"
+#include "replace.h"
+#include "no_replace.h"
+#include<stdlib.h>
+using namespace std;
+
+int main()
+{
+	student s[10];
+	do
+	{
+		cout<<"------MENU-------\n\n";
+		cout<<"\t1.With Replacement\n\t2.Without Replacement\n\t3.exit\n\n";
+		cout<<"Enter your choice : ";
+		int opt;
+		cin>>opt;
+		cout<<endl;
+
+		switch(opt)
+		{
+				case 1:
+				{
+					replace r;
+					do
+					{
+						cout<<"\t\t-----With Replacement------\n";
+						cout<<"\t\t\t1.Insert\n\t\t\t2.Display\n\t\t\t3.Search\n\t\t\t4.Main Menu\n\n";
+						cout<<"Enter your choice : ";
+
+						int ch;
+						cin>>ch;
+
+						switch(ch)
+						{
+							case 1 :    s[0].create(s);
+										r.insert(s,s[0].n);
+										cout<<"IGI\n";
+										break;
+
+							case 2 :    r.display();
+										break;
+
+							case 3 :	long long int x;
+										cout<<"Enter a phone number you want to search : ";
+										cin>>x;
+										r.search(x);
+										cout<<endl;
+										break;
+
+							case 4 :    main();
+
+						}
+					}
+					while(1);
+				}
+				break;
+
+				case 2:
+				{
+					no_replace r;
+					do
+					{
+						cout<<"\t\t-----Without Replacement------\n";
+						cout<<"\t\t\t1.Insert\n\t\t\t2.Display\n\t\t\t3.Search\n\t\t\t4.Main Menu\n\n";
+						cout<<"Enter your choice : ";
+
+						int ch;
+						cin>>ch;
+
+						switch(ch)
+						{
+							case 1 :    s[0].create(s);
+										r.insert(s,s[0].n);
+										cout<<"IGI\n";
+										break;
+
+							case 2 :    r.display();
+										break;
+
+							case 3 :	long long int x;
+										cout<<"Enter a phone number you want to search : ";
+										cin>>x;
+										r.search(x);
+										cout<<endl;
+										break;
+
+							case 4 :    main();
+
+						}
+					}
+					while(1);
+				}
+				break;
+
+				case 3 : exit(0);
+		}
+	}
+	while(1);
+
+	return 0;
+}
+
+/*
+ * no_replace.cpp
+ *
+ *  Created on: 18-Mar-2018
+ *      Author: deception
+ */
+
+#include "no_replace.h"
+#include "student.h"
+#include<iostream>
+#include<string>
+#include<iomanip>
+using namespace std;
+
+no_replace::no_replace()
+{
+	for(int i=0;i<20;i++)
+		{
+			flag[i]=0;
+			chain[i]=-1;
+		}
+
+		size=0;
+}
+
+int no_replace :: hash(long long int x)
+{
+	//return (x%size);
+	return x%10;
+}
+
+void no_replace:: insert(student s[],int n)
+{
+	size=n;
+	for(int stud_idx=0;stud_idx<size;stud_idx++)
+	{
+		int i=0,start;
+		start=hash(s[stud_idx].no);
+
+		while(flag[start])				//locate begining
+		{
+			if(hash(data[start].no) == hash(s[stud_idx].no))
+				break;
+
+			i++;
+			start=hash(start+1);
+		}
+
+		int j=start;
+
+		while(chain[j] != -1)	//go to end of chain or empty location
+			j=chain[j];
+
+		int curr_loc=j;
+
+		while(flag[curr_loc])
+		{
+			curr_loc=hash(curr_loc+1);
+			i++;
+		}
+
+		data[curr_loc]=s[stud_idx];
+		flag[curr_loc]=1;
+
+		if(j != curr_loc)
+			chain[j]=curr_loc;
+
+
+	}
+}
+
+void no_replace :: display()
+{
+	cout<<setw(10)<<"Name"<<setw(15)<<"Phone no."<<setw(15)<<"Chain"<<endl;
+	cout<<"---------------------------------------------------------------------";
+	cout<<endl;
+
+	for(int i=0;i<10;i++)
+	//for(int i=0;i<size;i++)
+	{
+			if(flag[i])
+				cout<<setw(10)<<data[i].name<<setw(15)<<data[i].no<<setw(15)<<chain[i]<<endl;
+
+			else
+				cout<<setw(10)<<"----"<<setw(15)<<"----"<<setw(15)<<chain[i]<<endl;
+	}
+}
+
+
+void no_replace :: search(long long int x)
+{
+	int i=0,j;
+	j=hash(x);
+
+	while(i<size && flag[j] && hash(data[j].no)!=hash(x))
+	{
+		i++;
+		j=hash(j+1);
+	}
+
+	if( !flag[j] || i==size)
+	{
+		cout<<"No match found !!";
+		return;
+	}
+
+	while(j!=-1)
+	{
+		if(data[j].no == x)
+		{
+			cout<<"Element found at index : ";
+			cout<<j<<endl;
+			return;
+		}
+
+		j=chain[j];
+	}
+
+	cout<<"No match found !!";
+	return;
+}
+
+
+//============================================================================
+// Name        : Hashing.cpp
+// Author      : 
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include "student.h"
+#include "replace.h"
+#include "no_replace.h"
+#include<stdlib.h>
+using namespace std;
+
+int main()
+{
+	student s[10];
+	do
+	{
+		cout<<"------MENU-------\n\n";
+		cout<<"\t1.With Replacement\n\t2.Without Replacement\n\t3.exit\n\n";
+		cout<<"Enter your choice : ";
+		int opt;
+		cin>>opt;
+		cout<<endl;
+
+		switch(opt)
+		{
+				case 1:
+				{
+					replace r;
+					do
+					{
+						cout<<"\t\t-----With Replacement------\n";
+						cout<<"\t\t\t1.Insert\n\t\t\t2.Display\n\t\t\t3.Search\n\t\t\t4.Main Menu\n\n";
+						cout<<"Enter your choice : ";
+
+						int ch;
+						cin>>ch;
+
+						switch(ch)
+						{
+							case 1 :    s[0].create(s);
+										r.insert(s,s[0].n);
+										cout<<"IGI\n";
+										break;
+
+							case 2 :    r.display();
+										break;
+
+							case 3 :	long long int x;
+										cout<<"Enter a phone number you want to search : ";
+										cin>>x;
+										r.search(x);
+										cout<<endl;
+										break;
+
+							case 4 :    main();
+
+						}
+					}
+					while(1);
+				}
+				break;
+
+				case 2:
+				{
+					no_replace r;
+					do
+					{
+						cout<<"\t\t-----Without Replacement------\n";
+						cout<<"\t\t\t1.Insert\n\t\t\t2.Display\n\t\t\t3.Search\n\t\t\t4.Main Menu\n\n";
+						cout<<"Enter your choice : ";
+
+						int ch;
+						cin>>ch;
+
+						switch(ch)
+						{
+							case 1 :    s[0].create(s);
+										r.insert(s,s[0].n);
+										cout<<"IGI\n";
+										break;
+
+							case 2 :    r.display();
+										break;
+
+							case 3 :	long long int x;
+										cout<<"Enter a phone number you want to search : ";
+										cin>>x;
+										r.search(x);
+										cout<<endl;
+										break;
+
+							case 4 :    main();
+
+						}
+					}
+					while(1);
+				}
+				break;
+
+				case 3 : exit(0);
+		}
+	}
+	while(1);
+
+	return 0;
+}
+
+/*
+ * no_replace.cpp
+ *
+ *  Created on: 18-Mar-2018
+ *      Author: deception
+ */
+
+#include "no_replace.h"
+#include "student.h"
+#include<iostream>
+#include<string>
+#include<iomanip>
+using namespace std;
+
+no_replace::no_replace()
+{
+	for(int i=0;i<20;i++)
+		{
+			flag[i]=0;
+			chain[i]=-1;
+		}
+
+		size=0;
+}
+
+int no_replace :: hash(long long int x)
+{
+	//return (x%size);
+	return x%10;
+}
+
+void no_replace:: insert(student s[],int n)
+{
+	size=n;
+	for(int stud_idx=0;stud_idx<size;stud_idx++)
+	{
+		int i=0,start;
+		start=hash(s[stud_idx].no);
+
+		while(flag[start])				//locate begining
+		{
+			if(hash(data[start].no) == hash(s[stud_idx].no))
+				break;
+
+			i++;
+			start=hash(start+1);
+		}
+
+		int j=start;
+
+		while(chain[j] != -1)	//go to end of chain or empty location
+			j=chain[j];
+
+		int curr_loc=j;
+
+		while(flag[curr_loc])
+		{
+			curr_loc=hash(curr_loc+1);
+			i++;
+		}
+
+		data[curr_loc]=s[stud_idx];
+		flag[curr_loc]=1;
+
+		if(j != curr_loc)
+			chain[j]=curr_loc;
+
+
+	}
+}
+
+void no_replace :: display()
+{
+	cout<<setw(10)<<"Name"<<setw(15)<<"Phone no."<<setw(15)<<"Chain"<<endl;
+	cout<<"---------------------------------------------------------------------";
+	cout<<endl;
+
+	for(int i=0;i<10;i++)
+	//for(int i=0;i<size;i++)
+	{
+			if(flag[i])
+				cout<<setw(10)<<data[i].name<<setw(15)<<data[i].no<<setw(15)<<chain[i]<<endl;
+
+			else
+				cout<<setw(10)<<"----"<<setw(15)<<"----"<<setw(15)<<chain[i]<<endl;
+	}
+}
+
+
+void no_replace :: search(long long int x)
+{
+	int i=0,j;
+	j=hash(x);
+
+	while(i<size && flag[j] && hash(data[j].no)!=hash(x))
+	{
+		i++;
+		j=hash(j+1);
+	}
+
+	if( !flag[j] || i==size)
+	{
+		cout<<"No match found !!";
+		return;
+	}
+
+	while(j!=-1)
+	{
+		if(data[j].no == x)
+		{
+			cout<<"Element found at index : ";
+			cout<<j<<endl;
+			return;
+		}
+
+		j=chain[j];
+	}
+
+	cout<<"No match found !!";
+	return;
+}
+
+
+//============================================================================
+// Name        : Hashing.cpp
+// Author      : 
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include "student.h"
+#include "replace.h"
+#include "no_replace.h"
+#include<stdlib.h>
+using namespace std;
+
+int main()
+{
+	student s[10];
+	do
+	{
+		cout<<"------MENU-------\n\n";
+		cout<<"\t1.With Replacement\n\t2.Without Replacement\n\t3.exit\n\n";
+		cout<<"Enter your choice : ";
+		int opt;
+		cin>>opt;
+		cout<<endl;
+
+		switch(opt)
+		{
+				case 1:
+				{
+					replace r;
+					do
+					{
+						cout<<"\t\t-----With Replacement------\n";
+						cout<<"\t\t\t1.Insert\n\t\t\t2.Display\n\t\t\t3.Search\n\t\t\t4.Main Menu\n\n";
+						cout<<"Enter your choice : ";
+
+						int ch;
+						cin>>ch;
+
+						switch(ch)
+						{
+							case 1 :    s[0].create(s);
+										r.insert(s,s[0].n);
+										cout<<"IGI\n";
+										break;
+
+							case 2 :    r.display();
+										break;
+
+							case 3 :	long long int x;
+										cout<<"Enter a phone number you want to search : ";
+										cin>>x;
+										r.search(x);
+										cout<<endl;
+										break;
+
+							case 4 :    main();
+
+						}
+					}
+					while(1);
+				}
+				break;
+
+				case 2:
+				{
+					no_replace r;
+					do
+					{
+						cout<<"\t\t-----Without Replacement------\n";
+						cout<<"\t\t\t1.Insert\n\t\t\t2.Display\n\t\t\t3.Search\n\t\t\t4.Main Menu\n\n";
+						cout<<"Enter your choice : ";
+
+						int ch;
+						cin>>ch;
+
+						switch(ch)
+						{
+							case 1 :    s[0].create(s);
+										r.insert(s,s[0].n);
+										cout<<"IGI\n";
+										break;
+
+							case 2 :    r.display();
+										break;
+
+							case 3 :	long long int x;
+										cout<<"Enter a phone number you want to search : ";
+										cin>>x;
+										r.search(x);
+										cout<<endl;
+										break;
+
+							case 4 :    main();
+
+						}
+					}
+					while(1);
+				}
+				break;
+
+				case 3 : exit(0);
+		}
+	}
+	while(1);
+
+	return 0;
+}
+
+/*
+ * no_replace.cpp
+ *
+ *  Created on: 18-Mar-2018
+ *      Author: deception
+ */
+
+#include "no_replace.h"
+#include "student.h"
+#include<iostream>
+#include<string>
+#include<iomanip>
+using namespace std;
+
+no_replace::no_replace()
+{
+	for(int i=0;i<20;i++)
+		{
+			flag[i]=0;
+			chain[i]=-1;
+		}
+
+		size=0;
+}
+
+int no_replace :: hash(long long int x)
+{
+	//return (x%size);
+	return x%10;
+}
+
+void no_replace:: insert(student s[],int n)
+{
+	size=n;
+	for(int stud_idx=0;stud_idx<size;stud_idx++)
+	{
+		int i=0,start;
+		start=hash(s[stud_idx].no);
+
+		while(flag[start])				//locate begining
+		{
+			if(hash(data[start].no) == hash(s[stud_idx].no))
+				break;
+
+			i++;
+			start=hash(start+1);
+		}
+
+		int j=start;
+
+		while(chain[j] != -1)	//go to end of chain or empty location
+			j=chain[j];
+
+		int curr_loc=j;
+
+		while(flag[curr_loc])
+		{
+			curr_loc=hash(curr_loc+1);
+			i++;
+		}
+
+		data[curr_loc]=s[stud_idx];
+		flag[curr_loc]=1;
+
+		if(j != curr_loc)
+			chain[j]=curr_loc;
+
+
+	}
+}
+
+void no_replace :: display()
+{
+	cout<<setw(10)<<"Name"<<setw(15)<<"Phone no."<<setw(15)<<"Chain"<<endl;
+	cout<<"---------------------------------------------------------------------";
+	cout<<endl;
+
+	for(int i=0;i<10;i++)
+	//for(int i=0;i<size;i++)
+	{
+			if(flag[i])
+				cout<<setw(10)<<data[i].name<<setw(15)<<data[i].no<<setw(15)<<chain[i]<<endl;
+
+			else
+				cout<<setw(10)<<"----"<<setw(15)<<"----"<<setw(15)<<chain[i]<<endl;
+	}
+}
+
+
+void no_replace :: search(long long int x)
+{
+	int i=0,j;
+	j=hash(x);
+
+	while(i<size && flag[j] && hash(data[j].no)!=hash(x))
+	{
+		i++;
+		j=hash(j+1);
+	}
+
+	if( !flag[j] || i==size)
+	{
+		cout<<"No match found !!";
+		return;
+	}
+
+	while(j!=-1)
+	{
+		if(data[j].no == x)
+		{
+			cout<<"Element found at index : ";
+			cout<<j<<endl;
+			return;
+		}
+
+		j=chain[j];
+	}
+
+	cout<<"No match found !!";
+	return;
+}
+
+
+
+
+/*
+ * replace.h
+ *
+ *  Created on: 18-Mar-2018
+ *      Author: deception
+ */
+
+#ifndef REPLACE_H_
+#define REPLACE_H_
+#include"student.h"
+
+class replace
+{
+	student data[20];
+	int flag[20];
+	int chain[20];
+
+	int size;
+
+public:
+	replace();				//send size of student array
+	int hash(long long int);
+
+	void insert(student s[],int);
+	void search(long long int);
+	void display();
+};
+
+#endif /* REPLACE_H_ */
+
+/*
+ * student.cpp
+ *
+ *  Created on: 18-Mar-2018
+ *      Author: deception
+ */
+
+#include "student.h"
+#include<iostream>
+#include<string>
+#include<iomanip>
+using namespace std;
+
+void student :: create(student arr[])
+{
+	cout<<"Enter number of students : ";
+	cin>>n;
+	cout<<endl;
+
+	for(int i=0;i<n;i++)
+	{
+		cout<<"Enter Name of student no. "<<i+1<<" : ";
+		cin>>arr[i].name;
+		cout<<endl;
+
+		cout<<"Enter Phone numeber of student no. "<<i+1<<" : ";
+		cin>>arr[i].no;
+		cout<<endl<<endl;
+	}
+}
+
+void student ::display(student arr[])
+{
+	cout<<setw(10)<<"Name"<<setw(15)<<"Phone no."<<endl;
+	cout<<"---------------------------------------------------------------------";
+	cout<<endl;
+
+	for(int i=0;i<n;i++)
+		cout<<setw(10)<<arr[i].name<<setw(15)<<arr[i].no<<endl;
+
+}
+
+/*
+ * student.h
+ *
+ *  Created on: 18-Mar-2018
+ *      Author: deception
+ */
+
+#ifndef STUDENT_H_
+#define STUDENT_H_
+#include<iostream>
+#include<string>
+using namespace std;
+
+class student
+{
+
+public:
+		int n;
+		string name;
+			long long int no;
+		void create(student data[]);
+		void display(student data[]);
+};
+
+#endif /* STUDENT_H_ */
+
+
+

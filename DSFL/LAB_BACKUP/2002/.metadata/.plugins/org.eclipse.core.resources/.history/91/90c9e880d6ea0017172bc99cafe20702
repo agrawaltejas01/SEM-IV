@@ -1,0 +1,97 @@
+/*
+ * stack.cpp
+ *
+ *  Created on: 27-Dec-2017
+ *      Author: e2002
+ */
+
+#include "stack.h"
+#include<malloc.h>
+#include<iostream>
+using namespace std;
+
+stack::stack()
+{
+	Top=NULL;
+}
+
+int stack:: isempty()
+{
+	if( Top==NULL)
+		return 1;
+
+	else
+		return 0;
+}
+
+int stack:: isfull()
+{
+	int count=0;
+	node *p;
+
+	p=Top;
+
+	while(p!=NULL)
+	{
+		count++;
+		p=p->link;
+	}
+
+	if(count==max)
+		return 1;
+
+	else
+		return 0;
+}
+
+void stack:: push(int x)
+{
+	if(!isfull())
+	{
+		node *n;
+
+		n=(node*)malloc(sizeof(node));
+
+		n->data=x;
+		n->link=Top;
+
+		Top=n;
+	}
+
+	else
+	{
+		cout<<"Stack is Full!!\n";
+		return ;
+	}
+}
+
+char stack:: tope()
+{
+	if(!isempty())
+		return Top->data;
+
+	else
+	{
+		cout<<"Stack is Empty!!\n";
+				return '~' ;
+	}
+}
+
+char stack :: pop()
+{
+	if(!isempty())
+	{
+		int n;
+		n=Top->data;
+
+		Top=Top->link;
+
+		return n;
+	}
+
+	/*else
+	{
+		cout<<"Stack is Full!!\n";
+				return -9999;
+	}*/
+}

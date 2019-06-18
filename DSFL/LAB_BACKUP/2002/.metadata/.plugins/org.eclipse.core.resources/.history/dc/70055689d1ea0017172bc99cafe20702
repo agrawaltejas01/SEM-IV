@@ -1,0 +1,86 @@
+//============================================================================
+// Name        : Expression_Conversion.cpp
+// Author      : 2002
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include<string>
+#include "stack.h"
+#include "inpost.h"
+using namespace std;
+
+int main()
+{
+	stack s;
+
+	/*cout<<"Before Pushing\n";
+cout<<"Top : "<<s.tope()<<"\n";
+	cout<<"Empty? :"<<s.isempty()<<endl;
+	cout<<"Full? :"<<s.isfull()<<endl;
+
+	s.push(1);
+	s.push(2);
+	s.push(3);
+
+	cout<<"After Pushing\n";
+
+	cout<<"Empty? :"<<s.isempty()<<"\n";
+	cout<<"Full? :"<<s.isfull()<<"\n";
+
+	cout<<"Top : "<<s.tope()<<"\n";
+
+	cout<<"Pop :"<<s.pop()<<endl;
+
+	coucout<<"Top : "<<s.tope()<<"\n";t<<"Top : "<<s.tope()<<"\n";
+
+	return 0;*/
+
+	string arr;
+	string ans;
+
+	cout<<"Enter String :";
+	cin>>arr;
+	cout<<endl;
+
+	int len=arr.length(),k=0;
+
+	for(int i=0;i<len;i++)
+	{
+		char x;
+
+		cin>>x;
+
+		if( (x>='A' && x<='Z') || (x>='a' && x<='z') )
+		{
+			ans[k++]=arr[i];
+		}
+
+		else if(post.isoperator(x))
+		{
+			while( post.priority(s.tope()) >= post.priority(x) )
+			{
+				ans[k++]=s.pop();
+			}
+
+			s.push(x);
+		}
+
+		else if(x==')')
+		{
+			while(s.tope() != '(')
+			{
+				ans[k++]=s.pop();
+			}
+
+		}
+
+		if(i==len-1 && !s.isempty())
+		{
+			while(!isempty())
+				ans[k++]=s.pop();
+		}
+	}
+}

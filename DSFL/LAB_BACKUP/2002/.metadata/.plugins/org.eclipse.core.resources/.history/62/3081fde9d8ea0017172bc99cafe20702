@@ -1,0 +1,18 @@
+/*
+ * inpre.cpp
+ *
+ *  Created on: 27-Dec-2017
+ *      Author: e2002
+ */
+
+#include "inpre.h"
+
+inpre::inpre() {
+	// TODO Auto-generated constructor stub
+
+}
+
+inpre::~inpre() {
+	// TODO Auto-generated destructor stub
+}
+

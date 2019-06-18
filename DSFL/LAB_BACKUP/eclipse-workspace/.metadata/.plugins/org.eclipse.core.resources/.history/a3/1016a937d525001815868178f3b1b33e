@@ -1,0 +1,49 @@
+/*
+ * graph.cpp
+ *
+ *  Created on: 12-Mar-2018
+ *      Author: e2002
+ */
+
+#include "graph.h"
+#include<iostream>
+#include<string>
+using namespace std;
+
+void graph:: getdata()
+{
+	cout<<"Enter number of nodes : ";
+	cin>>n;
+	cout<<endl<<endl;
+
+	for(int i=0;i<n;i++)
+	{
+		for(int j=0;j<n;j++)
+		{
+			cout<<"Enter edge between "<<i<<" and "<<j<<" : ";
+			cin>>graph[i][j];
+		}
+	}
+
+
+}
+
+void graph:: print_adj_matrix()
+{
+
+}
+
+void graph:: sort()
+{
+
+}
+
+void graph:: print_spanning_tree()
+{
+
+}
+
+void graph:: kruskal()
+{
+
+}

@@ -1,0 +1,6 @@
+12:15:33 **** Incremental Build of configuration Debug for project Expression_Tree ****
+make all 
+make: Nothing to be done for 'all'.
+
+12:15:34 Build Finished (took 350ms)
+

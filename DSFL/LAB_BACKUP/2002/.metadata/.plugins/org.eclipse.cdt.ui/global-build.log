@@ -1,0 +1,19 @@
+15:53:55 **** Incremental Build of configuration Debug for project Priority_Queue ****
+make all 
+Building file: ../src/queues.cpp
+Invoking: GCC C++ Compiler
+g++ -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/queues.d" -MT"src/queues.d" -o "src/queues.o" "../src/queues.cpp"
+In file included from ../src/queues.cpp:8:0:
+../src/queues.h:35:10: warning: non-static data member initializers only available with -std=c++11 or -std=gnu++11
+  int max=50,id;
+          ^
+Finished building: ../src/queues.cpp
+ 
+Building target: Priority_Queue
+Invoking: GCC C++ Linker
+g++  -o "Priority_Queue"  ./src/Priority_Queue.o ./src/queues.o   
+Finished building target: Priority_Queue
+ 
+15:53:56 **** Incremental Build of configuration Debug for project Priority_Queue ****
+make all 
+make: Nothing to be done for 'all'.

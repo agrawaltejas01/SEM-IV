@@ -1,0 +1,169 @@
+//============================================================================
+// Name        : Expression_Conversion.cpp
+// Author      : 2002
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+#include<bits/stdc++.h>
+//#include <iostream>
+//#include<string>
+#include "stack.h"
+#include "inpost.h"
+#include "inpre.h"
+#include <stdexcept>
+#include "stack_int.h"
+#include<stdlib.h>
+using namespace std;
+
+int isoperator(char x)
+{
+      if( ( (x== '+') || (x == '-') || (x == '*') || (x == '/') || (x == '^') ) )
+            return 1;
+
+      else
+            return 0;
+}
+
+int read(string s)
+{
+      int len=s.length();
+
+      for(int i=0;i<len-1;i++)
+      {
+            if(s[i]=='(')
+            {
+                  if (! (s[i+1] != '(' || !isalnum(s[i+1]) ))
+                  {
+                        cout<<"Invalid !!!\n\n";
+                        return 0;
+                  }
+            }
+
+            else if( isalnum(s[i]) )
+            {
+                  if( !  (s[i+1] == ')' || isoperator(s[i+1]) ) )
+                  {
+                        cout<<"Invalid !!!\n\n";
+                        return 0;
+                  }
+
+            }
+
+            else if( isoperator(s[i]) )
+            {
+                  if (! (s[i+1] == '(' || isalnum(s[i+1]) ))
+                  {
+                        cout<<"Invalid !!!\n\n";
+                        return 0;
+                  }
+            }
+
+            else if( s[i]==')')
+            {
+                  if( !isoperator(s[i+1]) )
+                        return 0;
+            }
+      }
+
+      return 1;
+
+}
+
+int main()
+{
+	stack s;
+	stack_int p;
+	inpost post;
+	inpre pre;
+
+	string arr,arr1;
+	string ans;
+
+	do
+	{
+		int ch;
+		cout<<"\n\tMENU\n";
+
+		cout<<"\t\t1.Enter Expression\n\t\t2.Infix To Postfix\n\t\t"
+				"3.Infix To Prefix\n\t\t4.Postfix Evaluation\n\t\t"
+				"5.Prefix Evaluation\n\t\t6.Re_Enter\n\t\t7.Exit\n";
+
+		cout<<"Enter Choice : ";
+		cin>>ch;
+		cout<<endl;
+
+		switch(ch)
+		{
+					case 1:
+					{
+						cout<<"\n\t\tEnter String in infix form :";
+						cin>>arr;
+						cout<<endl;
+
+						int check= read(arr);
+
+						 while(check==0)
+						 {
+							 cout<<"\n\t\tEnter String in infix form :";
+							 cin>>arr;
+							 cout<<endl;
+
+							check=read(arr);
+						  }
+
+						break;
+					}
+
+					case 2:
+					{
+						cout<<"\n\t\tPostfix Version  of Given Expression is : ";
+						post.infix_to_postfix(arr,s);
+						break;
+					}
+
+					case 3:
+					{
+						cout<<"\n\t\tPrefix Version  of Given Expression is : ";
+						pre.infix_to_prefix(arr,s);
+						break;
+					}
+
+					case 4:
+					{
+						cout<<"\n\t\tEnter String in postfix Form(With Single Digits as operands) :";
+						cin>>arr1;
+						cout<<endl;
+
+						cout<<"\n\t\tAnswer of Given Expression is : "<<post.postfix_eval(arr1,p)<<endl;
+						break;
+					}
+
+					case 5:
+					{
+						cout<<"\n\t\tEnter String in prefix Form(With Single Digits as operands) :";
+						cin>>arr1;
+						cout<<endl;
+
+						cout<<"\n\t\tAnswer of Given Expression is : "<<pre.prefix_eval(arr1,p)<<endl;
+						break;
+					}
+
+					case 6:
+					{
+						main();
+						break;
+					}
+
+					case 7:
+					{
+						exit(0);
+						break;
+					}
+		}
+	}
+	while(1);
+
+	return 0;
+
+}

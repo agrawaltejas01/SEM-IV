@@ -1,0 +1,50 @@
+/*
+ * data.cpp
+ *
+ *  Created on: 26-Mar-2018
+ *      Author: e2002
+ */
+
+#include "data.h"
+#include<string>
+#include<iostream>
+#include<fstream>
+#include<malloc.h>
+using namespace std;
+
+
+void data:: init()
+{
+	cout<<"Enter Total number of records : ";
+	cin>>rec;
+	cout<<endl;
+
+	for(int i=0;i<rec;i++)
+	{
+		arr[i].Name="...";
+		arr[i].id=-1;
+		arr[i].link=-1;
+		arr[i].loc=-1;
+	}
+}
+
+void data:: display()
+{
+
+}
+
+void data:: write()
+{
+
+}
+
+void data:: hash()
+{
+
+}
+
+void data:: insert()
+{
+
+}
+

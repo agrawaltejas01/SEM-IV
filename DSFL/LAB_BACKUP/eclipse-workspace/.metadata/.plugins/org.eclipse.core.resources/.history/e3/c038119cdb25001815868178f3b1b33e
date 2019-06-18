@@ -1,0 +1,82 @@
+//============================================================================
+// Name        : Kruskal.cpp
+// Author      : 
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include "graph.h"
+using namespace std;
+
+int main()
+{
+	graph g;
+
+	do
+		{
+			int ch;
+			cout<<"\tMENU\n";
+
+			cout<<"\t\t1.Enter Adjecency matrix\n\t\t2.Display Adjecency matrix\n\t\t3.Kruskal\n\t\t"
+					"4.Display minimum spanning tree\n\t\tExit\n\n";
+			cout<<"Enter Choice : ";
+			cin>>ch;
+			cout<<endl;
+
+			switch(ch)
+			{
+			case 1:
+					{
+
+						break;
+					}
+
+			case 2:
+					{
+
+						break;
+					}
+
+			case 3:
+					{
+
+						break;
+					}
+
+			case 4:
+					{
+
+						break;
+					}
+
+			case 5:
+					{
+
+						break;
+					}
+
+			case 6:
+					{
+						main();
+						break;
+					}
+
+			case 7:
+					{
+						exit(0);
+						break;
+					}
+
+			}
+		}
+		while(1);
+
+	g.getdata();
+	g.kruskal();
+
+	g.print_spanning_tree();
+	return 0;
+
+}

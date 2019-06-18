@@ -1,0 +1,18 @@
+/*
+ * student.cpp
+ *
+ *  Created on: 28-Mar-2018
+ *      Author: e2002
+ */
+
+#include "student.h"
+
+student::student() {
+	// TODO Auto-generated constructor stub
+
+}
+
+student::~student() {
+	// TODO Auto-generated destructor stub
+}
+

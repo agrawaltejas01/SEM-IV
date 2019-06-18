@@ -1,0 +1,71 @@
+
+C:\Tasm1.4\Tasm>tasm gta.asm
+Turbo Assembler  Version 3.0  Copyright (c) 1988, 1991 Borland International
+
+Assembling file:   gta.asm
+Error messages:    None
+Warning messages:  None
+Passes:            1
+Remaining memory:  421k
+
+
+C:\Tasm1.4\Tasm>tlinkgta.obj
+'tlinkgta.obj' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Tasm1.4\Tasm>tlink gta.obj
+Turbo Link  Version 2.0  Copyright (c) 1987, 1988 Borland International
+
+C:\Tasm1.4\Tasm>gta.exe
+1.Enter string | 2.Find Length | 3.Display Reverse | 4. Check if Palindrome | 5.
+Compare | 6.Exit :
+1Enter your string : Atharva
+1.Enter string | 2.Find Length | 3.Display Reverse | 4. Check if Palindrome | 5.
+Compare | 6.Exit :
+2
+Length of your string is : 7
+1.Enter string | 2.Find Length | 3.Display Reverse | 4. Check if Palindrome | 5.
+Compare | 6.Exit :
+3
+Reverse string of your string is :
+avrahtA
+1.Enter string | 2.Find Length | 3.Display Reverse | 4. Check if Palindrome | 5.
+Compare | 6.Exit :
+4
+Is string palindrome ? :
+String is not a palidrome
+1.Enter string | 2.Find Length | 3.Display Reverse | 4. Check if Palindrome | 5.
+Compare | 6.Exit :
+5
+Enter second string : Mahajan
+Different strings
+1.Enter string | 2.Find Length | 3.Display Reverse | 4. Check if Palindrome | 5.
+Compare | 6.Exit :
+1Enter your string : racecar
+1.Enter string | 2.Find Length | 3.Display Reverse | 4. Check if Palindrome | 5.
+Compare | 6.Exit :
+2
+Length of your string is : 7
+1.Enter string | 2.Find Length | 3.Display Reverse | 4. Check if Palindrome | 5.
+Compare | 6.Exit :
+2
+Length of your string is : 7
+1.Enter string | 2.Find Length | 3.Display Reverse | 4. Check if Palindrome | 5.
+Compare | 6.Exit :
+3
+Reverse string of your string is :
+racecar
+1.Enter string | 2.Find Length | 3.Display Reverse | 4. Check if Palindrome | 5.
+Compare | 6.Exit :
+4
+Is string palindrome ? :
+String is a palindrome
+1.Enter string | 2.Find Length | 3.Display Reverse | 4. Check if Palindrome | 5.
+Compare | 6.Exit :
+5
+Enter second string : kadak
+Different strings
+1.Enter string | 2.Find Length | 3.Display Reverse | 4. Check if Palindrome | 5.
+Compare | 6.Exit :
+6
+C:\Tasm1.4\Tasm>

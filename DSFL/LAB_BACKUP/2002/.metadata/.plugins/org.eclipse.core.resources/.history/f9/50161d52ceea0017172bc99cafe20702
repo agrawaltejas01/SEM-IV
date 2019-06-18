@@ -1,0 +1,17 @@
+/*
+ * infix_to_postfix.h
+ *
+ *  Created on: 27-Dec-2017
+ *      Author: e2002
+ */
+
+#ifndef INFIX_TO_POSTFIX_H_
+#define INFIX_TO_POSTFIX_H_
+
+class infix_to_postfix {
+public:
+	infix_to_postfix();
+	virtual ~infix_to_postfix();
+};
+
+#endif /* INFIX_TO_POSTFIX_H_ */

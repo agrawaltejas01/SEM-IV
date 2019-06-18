@@ -1,0 +1,106 @@
+//============================================================================
+// Name        : Expression_Conversion.cpp
+// Author      : 2002
+// Version     :
+// Copyright   : Your copyright notice
+// Description : Hello World in C++, Ansi-style
+//============================================================================
+
+#include <iostream>
+#include<string>
+#include "stack.h"
+#include "inpost.h"
+#include "inpre.h"
+#include <stdexcept>
+#include "stack_int.h"
+#include<stdlib.h>
+using namespace std;
+
+int main()
+{
+	stack s;
+	stack_int p;
+	inpost post;
+	inpre pre;
+
+	string arr;
+	string ans;
+
+	do
+	{
+		int ch;
+		cout<<"\tMENU\n";
+
+		cout<<"\t\t1.Enter Expression\n\t\t2.Infix To Postfix\n\t\t"
+				"3.Infix To Prefix\n\t\t4.Postfix Evaluation\n\t\t"
+				"5.Prefix Evaluation\n\t\t6.Re_Enter\n\t\t7.Exit\n";
+		cin>>ch;
+
+		switch(ch)
+		{
+			case 1:
+			{
+			cout<<"Enter String :";
+				cin>>arr;
+				cout<<endl;
+				break;
+			}
+
+			case 2:
+			{
+
+
+					post.infix_to_postfix(arr,s);
+				break;
+			}
+
+			case 3:
+					{
+						cout<<"Enter String :";
+							cin>>arr;
+							cout<<endl;
+
+							pre.infix_to_prefix(arr,s);
+						break;
+					}
+
+			case 4:
+					{
+						cout<<"Enter String :";
+							cin>>arr;
+							cout<<endl;
+
+							cout<<""<<post.postfix_eval(arr,p)<<endl;
+						break;
+					}
+
+			case 5:
+					{
+						cout<<"Enter String :";
+							cin>>arr;
+							cout<<endl;
+
+							cout<<""<<pre.prefix_eval(arr,p)<<endl;
+						break;
+					}
+
+			case 6:
+					{
+						cout<<"Enter String :";
+							cin>>arr;
+							cout<<endl;
+						break;
+					}
+
+			case 7:
+					{
+						exit(0);
+						break;
+					}
+		}
+	}
+	while(1);
+
+	return 0;
+
+}

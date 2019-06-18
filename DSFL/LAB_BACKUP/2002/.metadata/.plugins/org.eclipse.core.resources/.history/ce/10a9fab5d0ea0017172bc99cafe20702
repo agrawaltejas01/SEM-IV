@@ -1,0 +1,19 @@
+/*
+ * inpost.h
+ *
+ *  Created on: 27-Dec-2017
+ *      Author: e2002
+ */
+
+#ifndef INPOST_H_
+#define INPOST_H_
+
+class inpost
+{
+
+public:
+	inpost();
+	virtual ~inpost();
+};
+
+#endif /* INPOST_H_ */

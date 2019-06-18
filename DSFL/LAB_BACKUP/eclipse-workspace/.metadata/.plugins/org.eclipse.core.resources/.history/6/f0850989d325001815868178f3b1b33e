@@ -1,0 +1,17 @@
+/*
+ * graph.h
+ *
+ *  Created on: 12-Mar-2018
+ *      Author: e2002
+ */
+
+#ifndef GRAPH_H_
+#define GRAPH_H_
+
+class graph {
+public:
+	graph();
+	virtual ~graph();
+};
+
+#endif /* GRAPH_H_ */

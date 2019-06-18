@@ -1,0 +1,8 @@
+FILE 1 IS LINKED TO FILE 2
+
+EXECUTE COMMANDS >>>
+
+1 > tasm file1.asm
+2 > tasm file2.asm
+3 > tlink file1.obj	file2.obj
+4 > file1.exe

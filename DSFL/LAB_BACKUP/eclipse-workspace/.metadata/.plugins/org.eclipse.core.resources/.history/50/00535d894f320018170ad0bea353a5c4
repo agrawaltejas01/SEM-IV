@@ -1,0 +1,17 @@
+/*
+ * student.h
+ *
+ *  Created on: 28-Mar-2018
+ *      Author: e2002
+ */
+
+#ifndef STUDENT_H_
+#define STUDENT_H_
+
+class student {
+public:
+	student();
+	virtual ~student();
+};
+
+#endif /* STUDENT_H_ */

@@ -1,0 +1,16 @@
+C:\Tasm 1.4\tasm>Tasm assignment1.asm
+Turbo Assembler version 2.0 Copyright (c) 1988, 1990 Borland International
+
+Assembling file: 	Assignment1.asm
+Error messages:  	None
+Warning messages:	None
+Passes:			1
+Remaining memory:	476k
+
+C:\Tasm 1.4\tasm>Tlink Assignment1.obj
+Turbo link Version 3.0 Copyright (c) 1987, 1990 Borland International
+
+C:\Tasm 1.4\tasm>Assignment1.exe
+
+10
+C:\Tasm 1.4\tasm>
